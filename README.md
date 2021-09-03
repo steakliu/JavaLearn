@@ -5,4 +5,4 @@
 
 #### 目录
 
-    [ **1.CompletableFuture** ](https://gitee.com/steakliu/concurrent-programming/blob/master/CompletableFuture)
+    [ **CompletableFuture** ](https://gitee.com/steakliu/concurrent-programming/blob/master/CompletableFuture)
