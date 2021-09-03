@@ -3,5 +3,6 @@ CompletableFuture异步编程
     如图，我们系统需要用RPC远程去调用A,B,C,D四个系统的接口，每个接口耗时100ms,那么总共就是400ms
     ![输入图片说明](https://images.gitee.com/uploads/images/2021/0903/125639_27b63c27_4775150.png "同步调用.png")
     我们能不能想其它的方法来缩短时间呢？当然可以，譬如使用消息队列，在这里我们先不讨论中间件，而是直接使用java类库，Java8引入了CompletableFuture,使用它可以进行完美的异步操作，我们看下使用它后的示意图。
+    可以看出，使用CompletableFuture是异步调用的，等到大家都调用结束后，再对结果进行汇总。
     ![输入图片说明](https://images.gitee.com/uploads/images/2021/0903/130615_d307f663_4775150.png "异步调用.png")
     
