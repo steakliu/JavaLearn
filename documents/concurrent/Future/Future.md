@@ -1,4 +1,4 @@
-### **Future的使用**
+## **Future的使用**
 
 Future代表异步执行的结果，也就是说异步执行完毕后，结果保存在Future里，
 我们在使用线程池submit()时需要传入Callable接口,线程池的返回值为一个Future,而Future则保存了执行的结果
@@ -59,3 +59,8 @@ isCancelled(),判断任务是否取消
 ```
   boolean cancelled = future.isCancelled();
 ```
+
+### **execute()和submit区别**
+
+1.execute无返回值，这样就无法知道任务是否执行成功
+2.execute抛出异常后无法处理，不能捕捉异常，而submit可以捕获异常;
