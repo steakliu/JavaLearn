@@ -3,13 +3,13 @@ package concurrent.Future;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.concurrent.FutureTask;
 
 public class FutureTest2 {
 
     final static ExecutorService executorService = Executors.newCachedThreadPool();
 
     private static void test1(){
-        int s = 1/0;
         System.out.println("test 1");
     }
 
