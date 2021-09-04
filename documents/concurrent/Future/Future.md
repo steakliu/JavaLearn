@@ -68,4 +68,4 @@ isCancelled(),判断任务是否取消
 ### **Future不足之处**
 虽然Future在执行多个操作时的确做到了异步，但是Future.get()取出异步执行结果的时候缺是阻塞的，
 只有当前一个操作get完以后才能到下一个操作get
-
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0904/151701_14cc1d4c_4775150.png "get.png")
