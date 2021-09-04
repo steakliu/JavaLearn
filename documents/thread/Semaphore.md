@@ -1,3 +1,9 @@
+## Semaphore
+Semaphore即信号量机制，它和CountDownLatch,CyclicBarrier类似，都是计数器的思想，
+构造函数permits表示计数器，在每个线程任务执行完毕时我们调用了semaphore.release()，那么permits的值将会+1
+因为我们执行了连个线程任务，所以此时permits为2，semaphore.acquire(2)处则满足条件，主线程将往下执行，如果改为
+semaphore.acquire(3),那么主线程将会一直阻塞，因为计数器为2.
+```
 package thread;
 
 import java.util.concurrent.ExecutorService;
@@ -36,8 +42,10 @@ public class SemaphoreTest {
             }
             semaphore.release();
         });
-        semaphore.acquire(3);
-        System.out.println("all child thread is over");
+        semaphore.acquire(2);
+        System.out.println("all child thread is over,main thread is start");
         executorService.shutdown();
     }
 }
+
+```
