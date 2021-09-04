@@ -1,9 +1,6 @@
 package thread;
 
-import java.util.concurrent.BrokenBarrierException;
-import java.util.concurrent.CyclicBarrier;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.*;
 
 /**
  * TODO
@@ -14,33 +11,54 @@ import java.util.concurrent.Executors;
  */
 public class CyclicBarrierTest {
     static ExecutorService executorService = Executors.newCachedThreadPool();
-
-    static CyclicBarrier cyclicBarrier = new CyclicBarrier(2, new Runnable() {
-        @Override
-        public void run() {
-            System.out.println("merge result");
-        }
-    });
-
+    static CyclicBarrier cyclicBarrier = new CyclicBarrier(3);
     public static void main(String[] args) {
         executorService.submit(() -> {
-            System.out.println("task1  over");
+            System.out.println("task1");
             try {
                 cyclicBarrier.await();
             } catch (InterruptedException | BrokenBarrierException e) {
                 e.printStackTrace();
             }
+            System.out.println("task2");
+            try {
+                cyclicBarrier.await();
+            } catch (InterruptedException | BrokenBarrierException e) {
+                e.printStackTrace();
+            }
+            System.out.println("task3");
         });
 
         executorService.submit(() -> {
-            System.out.println("task2 over");
+            System.out.println("task1");
             try {
                 cyclicBarrier.await();
             } catch (InterruptedException | BrokenBarrierException e) {
                 e.printStackTrace();
             }
+            System.out.println("task2");
+            try {
+                cyclicBarrier.await();
+            } catch (InterruptedException | BrokenBarrierException e) {
+                e.printStackTrace();
+            }
+            System.out.println("task3");
         });
 
-        executorService.shutdown();
+        executorService.submit(() -> {
+            System.out.println("task1");
+            try {
+                cyclicBarrier.await();
+            } catch (InterruptedException | BrokenBarrierException e) {
+                e.printStackTrace();
+            }
+            System.out.println("task2");
+            try {
+                cyclicBarrier.await();
+            } catch (InterruptedException | BrokenBarrierException e) {
+                e.printStackTrace();
+            }
+            System.out.println("task3");
+        });
     }
 }
