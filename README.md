@@ -10,4 +10,4 @@ Java基础和相关技术栈笔记
 ##### [Semaphore信号量机制](https://gitee.com/steakliu/java-code/blob/master/documents/thread/Semaphore.md)
 ##### [Future](https://gitee.com/steakliu/java-code/blob/master/documents/concurrent/Future/Future.md)
 ##### [CompletableFuture](https://gitee.com/steakliu/java-code/blob/master/documents/concurrent/CompletableFuture/CompletableFuture.md)
-##### [ThreadLocal] (https://gitee.com/steakliu/java-code/blob/master/documents/thread/ThreadLocal.md)
+##### [ThreadLocal](https://gitee.com/steakliu/java-code/blob/master/documents/thread/ThreadLocal.md)
