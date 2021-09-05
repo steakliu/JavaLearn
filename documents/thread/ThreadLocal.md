@@ -67,3 +67,21 @@ public class ThreadLocalTest {
 
 ```
 
+我们可以看出,ThreadLocal其实是存放在threadLocals，而threadLocals是ThreadLocalMap
+的一个成员变量，所以ThreadLocal实际上只是一个外壳，里面层层封装
+```
+    public void set(T value) {
+        Thread t = Thread.currentThread();
+        ThreadLocalMap map = getMap(t);
+            if (map != null)
+        map.set(this, value);
+            else
+        createMap(t, value);
+    }
+    
+    ThreadLocal.ThreadLocalMap threadLocals = null;
+    
+    ThreadLocalMap getMap(Thread t) {
+        return t.threadLocals;
+    }
+```
