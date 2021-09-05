@@ -1,7 +1,7 @@
 >## 一文说清IaaS,PaaS,SaaS
 >>随着云服务的不断发展，越来越多的公司都将服务上云，所以简称云服务。  
 >>云服务又包含很多内容，目前业界将其划分为三大类：  
-
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0905/155354_9d4f09a8_4775150.jpeg "soft.jpg")
 >>#### IaaS:基础设置即服务(Infrastructure-as-a-Service)  
 >>#### PaaS:平台即服务(Platform-as-a-Service)  
 >>#### SaaS:软件即服务(Software-as-a-Service)  
