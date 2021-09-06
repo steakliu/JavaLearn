@@ -4,48 +4,25 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * ThreadLocal
+ * TODO
+ *
+ * @author 刘牌
+ * @version 1.0
+ * @date 2021/9/5 0005 0:18
  */
 public class ThreadLocalTest {
-
-    private static ThreadLocal<ThreadLocalUser> threadLocal = new ThreadLocal<ThreadLocalUser>();
-
-    final static ExecutorService executorService = Executors.newCachedThreadPool();
-
-    /**
-     * 获取本地线程值
-     */
-    static void getThreadLocalUser(){
-        System.out.println(Thread.currentThread().getName()+"  :  "+threadLocal.get());
-    }
-
-    /**
-     * 移除本地线程值
-     */
-    static void removeThreadLocalUser(){
-        threadLocal.remove();
-        System.out.println(Thread.currentThread().getName()+"  :  "+threadLocal.get());
-    }
+    private static final ExecutorService executorService = Executors.newCachedThreadPool();
+    private static ThreadLocal<Object> threadLocal = new ThreadLocal<>();
 
     public static void main(String[] args) {
-        executorService.submit(() ->{
-            ThreadLocalUser threadLocalUser = new ThreadLocalUser();
-            threadLocalUser.setUserId("123456");
-            threadLocalUser.setRoleId("1");
-            threadLocal.set(threadLocalUser);
-            getThreadLocalUser();
-            removeThreadLocalUser();
+        executorService.submit(() -> {
+            threadLocal.set("the first thread");
+            System.out.println(threadLocal.get());
         });
 
-        executorService.submit(() ->{
-            ThreadLocalUser threadLocalUser = new ThreadLocalUser();
-            threadLocalUser.setUserId("123456");
-            threadLocalUser.setRoleId("1");
-            threadLocal.set(threadLocalUser);
-            getThreadLocalUser();
-            removeThreadLocalUser();
+        executorService.submit(() -> {
+            threadLocal.set("the second thread");
+            System.out.println(threadLocal.get());
         });
-
-        executorService.shutdown();
     }
 }
