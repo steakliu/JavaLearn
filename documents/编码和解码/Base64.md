@@ -1,6 +1,6 @@
 ## Base64编码
 ### 字符对应表  
-![输入图片说明](https://images.gitee.com/uploads/images/2021/0907/235316_6a456e44_4775150.png "屏幕截图.png") 
+![输入图片说明](https://images.gitee.com/uploads/images/2021/0907/235316_6a456e44_4775150.png "屏幕截图.png")   
 上表就是用来表示Base64,一共64个字符，A-Z,a-z,0-9,+,-,还有=(作为补位)  
 无论将文件，字符串，还是什么转为Base64，一定是用上表的字符表示。
 
