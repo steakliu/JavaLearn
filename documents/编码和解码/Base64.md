@@ -30,16 +30,18 @@
 如果用utf-8编码的文字转为Base64编码，用utf-16对Base64进行解码，那么解码得到的将为乱码。
 
 ### JAVA API  
-####编码  
+#### 编码  
 Base64.getEncoder().encode(byte[] bytes);
 Base64.getEncoder().encodeToString(byte[] bytes);  
 and so on  
 
-####解码
+#### 解码
 Base64.getDecoder().decode(byte[] bytes);  
 and so on
 
-###示例
+### 示例
+
+```
 /**
  * TODO
  *
@@ -58,6 +60,7 @@ public class Base64Test {
     }
 }
 
+```
 
 
 
