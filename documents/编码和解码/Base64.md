@@ -1,6 +1,6 @@
 ## Base64编码
 ### 字符对应表  
-![输入图片说明](https://images.gitee.com/uploads/images/2021/0907/215451_25fcc444_4775150.png "屏幕截图.png")  
+![输入图片说明](https://images.gitee.com/`这里输入代码`uploads/images/2021/0907/215451_25fcc444_4775150.png "屏幕截图.png")  
 上表就是用来表示Base64,一共64个字符，A-Z,a-z,0-9,+,-,还有=(作为补位)  
 无论将文件，字符串，还是什么转为Base64，一定是用上表的字符表示。
 
@@ -31,12 +31,16 @@
 
 ### JAVA API  
 #### 编码  
-Base64.getEncoder().encode(byte[] bytes);
+```
+Base64.getEncoder().encode(byte[] bytes);  
 Base64.getEncoder().encodeToString(byte[] bytes);  
+```
 and so on  
 
 #### 解码
+```
 Base64.getDecoder().decode(byte[] bytes);  
+```
 and so on
 
 ### 示例
