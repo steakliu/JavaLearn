@@ -1,6 +1,6 @@
 package thread.customthreadpool.reject;
 
-import thread.customthreadpool.MyThreadFactory;
+import thread.customthreadpool.threadFactory.MyThreadFactory;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;

@@ -1,6 +1,7 @@
 package thread.customthreadpool;
 
 import thread.customthreadpool.reject.MyThreadRejectExecutionHandler;
+import thread.customthreadpool.threadFactory.MyThreadFactory;
 
 import java.util.concurrent.*;
 
@@ -40,14 +41,6 @@ public class CustomThreadPool {
     private static final MyThreadRejectExecutionHandler THREAD_REJECT_EXECUTION_HANDLER = new MyThreadRejectExecutionHandler();
     /**
      * 手动创建线程池
-     *
-     *      * 拒绝策略：当线程池的任务缓存队列已满并且线程池中的线程数目达到maximumPoolSize时，如果还有任务到来就会采取任务拒绝策略，通常有以下四种策略：
-     *      * ThreadPoolExecutor.AbortPolicy:丢弃任务并抛出RejectedExecutionException异常。
-     *      * ThreadPoolExecutor.DiscardPolicy：丢弃任务，但是不抛出异常。
-     *      * ThreadPoolExecutor.DiscardOldestPolicy：丢弃队列最前面的任务，然后重新提交被拒绝的任务
-     *      * ThreadPoolExecutor.CallerRunsPolicy：由调用线程（提交任务的线程）处理该任务
-     *      可以自定义拒绝策略，直接继承RejectedExecutionHandler
-     *      使用内置的 new ThreadPoolExecutor.AbortPolicy()
      */
     private static final ThreadPoolExecutor pool =
             new ThreadPoolExecutor(
@@ -58,8 +51,6 @@ public class CustomThreadPool {
                     WORK_QUEUE,
                     THREAD_FACTORY,
                     THREAD_REJECT_EXECUTION_HANDLER);
-
-
     public static void main(String[] args) {
 
     }
