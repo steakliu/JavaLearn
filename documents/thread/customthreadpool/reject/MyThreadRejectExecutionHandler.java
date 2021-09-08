@@ -1,4 +1,4 @@
-package thread.customthreadpool;
+package thread.customthreadpool.reject;
 
 import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.RejectedExecutionHandler;
@@ -10,6 +10,9 @@ import java.util.concurrent.ThreadPoolExecutor;
 public class MyThreadRejectExecutionHandler implements RejectedExecutionHandler {
     @Override
     public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
-        throw new RejectedExecutionException("Task "+r.toString() + "rejected from "+executor.toString());
+        /**
+         * 加入自己的处理逻辑
+         */
+        throw new RejectedExecutionException("请求异常");
     }
 }

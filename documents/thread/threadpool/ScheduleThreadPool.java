@@ -1,8 +1,5 @@
 package thread.threadpool;
 
-import thread.customthreadpool.MyThreadFactory;
-import thread.customthreadpool.MyThreadRejectExecutionHandler;
-
 import java.util.concurrent.*;
 
 public class ScheduleThreadPool {

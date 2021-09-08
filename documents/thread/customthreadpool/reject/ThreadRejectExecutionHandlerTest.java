@@ -1,22 +1,29 @@
-package thread.customthreadpool;
+package thread.customthreadpool.reject;
 
-import thread.customthreadpool.reject.MyThreadRejectExecutionHandler;
+import thread.customthreadpool.MyThreadFactory;
 
-import java.util.concurrent.*;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
- * 手动创建线程池
+ * 线程池拒绝策略
+ *
+ *
+ *
+ * 当
  */
-public class CustomThreadPool {
+public class ThreadRejectExecutionHandlerTest {
 
     /**
      * 核心线程数
      */
-    private static final int CORE_POOL_SIZE = 20;
+    private static final int CORE_POOL_SIZE = 5;
     /**
      * 最大线程数
      */
-    private static final int MAXIMUM_POOL_SIZE = 100;
+    private static final int MAXIMUM_POOL_SIZE = 30;
     /**
      * 等待时间
      */
@@ -57,10 +64,19 @@ public class CustomThreadPool {
                     UNIT,
                     WORK_QUEUE,
                     THREAD_FACTORY,
-                    THREAD_REJECT_EXECUTION_HANDLER);
+                    new ThreadPoolExecutor.AbortPolicy()  );
 
+    private static int count = 0;
 
+    private synchronized static void add(){
+        System.out.println(Thread.currentThread().getName());
+        count++;
+    }
     public static void main(String[] args) {
-
+        for (int i = 0 ; i < 100000 ; i++){
+            pool.submit(ThreadRejectExecutionHandlerTest::add);
+        }
+        pool.shutdown();
+        System.out.println(count);
     }
 }

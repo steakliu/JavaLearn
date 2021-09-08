@@ -19,7 +19,7 @@ public class MyThreadFactory implements ThreadFactory {
      * 构造函数传入我们想业务需要的线程名字threadName，方便发生异常是追溯
      * @param threadName
      */
-    MyThreadFactory(String threadName) {
+    public MyThreadFactory(String threadName) {
         SecurityManager s = System.getSecurityManager();
         group = (s != null) ? s.getThreadGroup() :
                 Thread.currentThread().getThreadGroup();
