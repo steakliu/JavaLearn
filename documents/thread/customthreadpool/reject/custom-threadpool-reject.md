@@ -3,7 +3,7 @@
 
 线程池一共内置了四种拒绝策略,线程池默认使用AbortPolicy，
 
-##### ThreadPoolExecutor.AbortPolicy()  
+### ThreadPoolExecutor.AbortPolicy()  
 丢弃任务并抛出RejectedExecutionException异常  
 ```
  public static class AbortPolicy implements RejectedExecutionHandler {
@@ -18,7 +18,7 @@
 
 ![img.png](img.png)
 
-##### ThreadPoolExecutor.DiscardPolicy()  
+### ThreadPoolExecutor.DiscardPolicy()  
 丢弃任务，但是不抛出异常。
 ```
     public static class DiscardPolicy implements RejectedExecutionHandler {
@@ -28,7 +28,7 @@
     }
 ```
 
-##### ThreadPoolExecutor.DiscardOldestPolicy()  
+### ThreadPoolExecutor.DiscardOldestPolicy()  
 丢弃队列最前面的任务，然后重新提交被拒绝的任务,e.getQueue().poll()将最前面的任务弹出
 
 ```
@@ -44,7 +44,7 @@
     }
 ```
 
-##### ThreadPoolExecutor.CallerRunsPolicy()  
+### ThreadPoolExecutor.CallerRunsPolicy()  
 由调用线程（提交任务的线程）处理该任务
 
 ```
@@ -58,7 +58,7 @@
     }
 ```
 
-##### 自定义拒绝策略  
+### 自定义拒绝策略  
 当上面拒绝策略不能满足我们的需求，我们需要自定义拒绝策略，只需要实现RejectedExecutionHandler就行
 
 ```
