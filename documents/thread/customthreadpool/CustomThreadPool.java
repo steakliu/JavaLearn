@@ -28,7 +28,11 @@ public class CustomThreadPool {
      * 1.ArrayBlockingQueue ， ArrayBlockingQueue采用
      *
      */
-    private static final BlockingQueue<Runnable> WORK_QUEUE = new ArrayBlockingQueue<>(100);
+    private static final BlockingQueue<Runnable> WORK_QUEUE = new ArrayBlockingQueue<>(12);
+    /**
+     * 任务队列使用延时队列
+     */
+    private static final BlockingQueue<Delayed> DELAYEDS = new DelayQueue<>();
     /**
      * 线程工厂
      */
