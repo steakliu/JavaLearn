@@ -1,6 +1,4 @@
-## 手动创建线程池  
-
-### 任务队列  
+### 线程池之任务队列  
 ![img.png](img.png)  
 
 #### ArrayBlockingQueue  
