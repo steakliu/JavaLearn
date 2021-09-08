@@ -1,7 +1,11 @@
 ## 线程池之拒绝策略  
-当线程池中任务队列已满且最大线程数maximumPoolSize达到最大，那么将会触发拒绝策略  
+当线程池中任务队列已满且最大线程数maximumPoolSize达到最大，此时如果还有任务过来，那么将会触发拒绝策略  
 
-线程池一共内置了四种拒绝策略,线程池默认使用AbortPolicy，
+线程池一共内置了四种拒绝策略,线程池默认使用AbortPolicy  
+
+```
+    private static final RejectedExecutionHandler defaultHandler =new AbortPolicy();
+```
 
 ### ThreadPoolExecutor.AbortPolicy()  
 丢弃任务并抛出RejectedExecutionException异常  
