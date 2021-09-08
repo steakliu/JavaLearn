@@ -183,3 +183,85 @@ private final ReentrantLock putLock = new ReentrantLock();
     }
 ```
 
+#### DelayDeque  
+
+DelayDeque是一个无界队列(无界就是添加元素永远不会阻塞)，添加进DelayDeque的元素会经过compareTo方法计算，然后按照时间
+进行排序，排在队头的元素是最早到期的，越往后到期时间越长，DelayDeque只能接受Delayed接口类型
+如图所示，队列里的元素并不是按照先进先出的规则，而是按照过期时间
+![img_3.png](img_3.png)
+
+##### 示例
+
+```
+package thread.customthreadpool.delayDeque;
+
+import java.util.concurrent.Delayed;
+import java.util.concurrent.TimeUnit;
+
+public class MyDelayed implements Delayed {
+
+    private final String taskName ;
+    private final long nowTime = System.currentTimeMillis();
+    private final long expireTime ;
+
+    public MyDelayed(String taskName,long expireTime) {
+        this.taskName = taskName;
+        this.expireTime = expireTime;
+    }
+
+    @Override
+    public long getDelay(TimeUnit unit) {
+        return unit.convert((nowTime+expireTime) - System.currentTimeMillis(),TimeUnit.MILLISECONDS);
+    }
+
+    @Override
+    public int compareTo(Delayed o) {
+        MyDelayed myDelayed = (MyDelayed) o;
+        return (int) (this.getDelay(TimeUnit.MILLISECONDS) - o.getDelay(TimeUnit.MILLISECONDS));
+    }
+
+    @Override
+    public String toString() {
+        return "MyDelayed{" +
+                "taskName='" + taskName + '\'' +
+                ", nowTime=" + nowTime +
+                ", expireTime=" + expireTime +
+                '}';
+    }
+}
+```
+
+```
+package thread.customthreadpool.delayDeque;
+
+import java.util.concurrent.*;
+
+public class MyDelayQueue {
+
+    private static final DelayQueue<MyDelayed> delayQueue = new DelayQueue<>();
+
+    private static final ExecutorService service = Executors.newCachedThreadPool();
+
+    public static void main(String[] args) throws InterruptedException {
+        service.submit(() -> {
+            delayQueue.put(new MyDelayed("A-Task",5000));
+            delayQueue.put(new MyDelayed("B-Task",4000));
+            delayQueue.put(new MyDelayed("C-Task",3000));
+            delayQueue.put(new MyDelayed("D-Task",2000));
+            delayQueue.put(new MyDelayed("E-Task",1000));
+        });
+        while (true){
+            System.out.println(delayQueue.take());
+        }
+    }
+}
+
+```
+
+##### result  
+![img_4.png](img_4.png)  
+
+##### 应用场景  
+1.美团外卖订单：当我们下单后没付款 ，30分钟后将自动取消订单  
+2.缓存，对于某些任务，需要在特定的时间清理；  
+and so on
