@@ -188,7 +188,7 @@ private final ReentrantLock putLock = new ReentrantLock();
 DelayDeque是一个无界队列(无界就是添加元素永远不会阻塞)，添加进DelayDeque的元素会经过compareTo方法计算，然后按照时间
 进行排序，排在队头的元素是最早到期的，越往后到期时间越长，DelayDeque只能接受Delayed接口类型
 如图所示，队列里的元素并不是按照先进先出的规则，而是按照过期时间
-![img_3.png](img_3.png)
+![img_3.png](img_3.png)  
 
 ##### 示例
 
@@ -264,4 +264,8 @@ public class MyDelayQueue {
 ##### 应用场景  
 1.美团外卖订单：当我们下单后没付款 ，30分钟后将自动取消订单  
 2.缓存，对于某些任务，需要在特定的时间清理；  
-and so on
+and so on  
+
+#### LinkedTransferQueue
+
+#### PriorityBlockingQueue
