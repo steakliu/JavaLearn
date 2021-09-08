@@ -18,4 +18,7 @@ Java基础和相关技术栈笔记
 #### 编码解码
 ###### [一文读懂Base64编码](https://gitee.com/steakliu/java-code/blob/master/documents/%E7%BC%96%E7%A0%81%E5%92%8C%E8%A7%A3%E7%A0%81/Base64.md)
 
-#### Rpc(远程过程调用)
+#### Rpc(远程过程调用)  
+
+#### XML   
+######[xml解析](https://gitee.com/steakliu/java-code/blob/master/documents/xml/XmlParse.md)
