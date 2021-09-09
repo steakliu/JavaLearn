@@ -183,7 +183,7 @@ private final ReentrantLock putLock = new ReentrantLock();
 
 #### DelayDeque  
 
-DelayDeque是一个无界队列(无界就是添加元素永远不会阻塞)，添加进DelayDeque的元素会经过compareTo方法计算，然后按照时间
+DelayDeque是一个无界队列，添加进DelayDeque的元素会经过compareTo方法计算，然后按照时间
 进行排序，排在队头的元素是最早到期的，越往后到期时间越长，DelayDeque只能接受Delayed接口类型
 如图所示，队列里的元素并不是按照先进先出的规则，而是按照过期时间  
 ![img_3.png](img_3.png)  
@@ -264,6 +264,26 @@ public class MyDelayQueue {
 2.缓存，对于某些任务，需要在特定的时间清理；  
 and so on  
 
-#### LinkedTransferQueue
+#### LinkedTransferQueue  
+当消费线程从队列中取元素时，如果队列为空，那么生成一个为null的节点，消费者线程就一直等待，此时如果生产者线程发现队列中有一个null节点，
+它就不入队了，而是将元素填充到这个null节点并唤醒消费者线程，然后消费者线程取走元素。  
+LinkedTransferQueue是 SynchronousQueue 和 LinkedBlockingQueue 的整合，性能比较高，因为没有锁操作，
+SynchronousQueue不能存储元素，而LinkedTransferQueue能存储元素，
 
-#### PriorityBlockingQueue
+#### PriorityBlockingQueue  
+PriorityBlockingQueue是一个无界的阻塞队列，同时是一个支持优先级的队列，读写操作都是基于ReentrantLock,
+内部使用堆算法保证每次出队都是优先级最高的元素
+```
+    public E take() throws InterruptedException {
+        final ReentrantLock lock = this.lock;
+        lock.lockInterruptibly();
+        E result;
+        try {
+            while ( (result = dequeue()) == null)
+                notEmpty.await();
+        } finally {
+            lock.unlock();
+        }
+        return result;
+    }
+```

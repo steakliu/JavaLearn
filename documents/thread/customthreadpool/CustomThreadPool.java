@@ -30,7 +30,7 @@ public class CustomThreadPool {
      * 任务队列
      *
      */
-    private static final BlockingQueue<Runnable> WORK_QUEUE = new ArrayBlockingQueue<>(12);
+    private static final BlockingQueue<Runnable> WORK_QUEUE = new PriorityBlockingQueue<>();
     /**
      * 线程工厂
      */
