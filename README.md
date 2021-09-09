@@ -14,7 +14,7 @@ Java基础和相关技术栈笔记
 ###### [定时线程池ScheduledExecutorService,ScheduledThreadPoolExecutor](https://gitee.com/steakliu/java-code/blob/master/documents/thread/threadpool/ScheduleThreadPool.md)
 ###### [线程池拒绝策略RejectedExecutionHandler](https://gitee.com/steakliu/java-code/blob/master/documents/thread/customthreadpool/reject/custom-threadpool-reject.md)
 ###### [线程池任务队列workQueue](https://gitee.com/steakliu/java-code/blob/master/documents/thread/customthreadpool/custom-threadpool-taskQueue.md)
-
+###### [线程工厂ThreadFactory](https://gitee.com/steakliu/java-code/blob/master/documents/thread/customthreadpool/threadFactory/thread-factory.md)
 
 #### 软件架构和模式
 ###### [一文说清IaaS,PaaS,Saas](https://gitee.com/steakliu/java-code/blob/master/documents/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84/IaSS-PaaS-SaaS.md)  
